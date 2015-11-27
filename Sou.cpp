@@ -23,7 +23,7 @@ double  gradient_alpha = 0.01;
 #define episode_length 500
 #define R_tie 0.5
 #define board_length 33
-
+#define R 200
 int Llayer[] = { 39 ,27, 1 , 1 };
 int num_iterations;
 
@@ -407,11 +407,11 @@ void train() {
 	for (int i = 0;i < N;++i) {
 		num_iterations = B - B*double(i / N); // Number of iterations decreases over time
 		gradient_alpha *= discount;	// Learning rate decreases overtime 
-		double E = double(abs(obwin - owwin)) / 100.0 + 0.1+0.9*(i%100==0); // computes E which is the propability of playing randomly in the next training episode
+		double E = double(abs(obwin - owwin)) / R + 0.1; // computes E which is the propability of playing randomly in the next training episode
 						
 		training_episode(E);
 
-		if (i % 200==0) {
+		if (i % R==0) {
 			obwin = 0, owwin = 0, odraws = 0;// reset values that influence E
 		}
 	
