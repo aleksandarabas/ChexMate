@@ -417,3 +417,8 @@ void train() {
 	
 	}
 }
+int main(){
+	init();
+	train();// after the training is complete, the weights of the neural net will be   storted in the vector weights. 
+	
+}
