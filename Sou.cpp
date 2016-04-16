@@ -288,9 +288,9 @@ double g_val(vector<double> & V) {
 
 }
 bool chance(double E) {// Returns 1 with probability of E
-	double R = rand();
-	R /= RAND_MAX;
-	return (R < E);
+	double rr = rand();
+	rr /= RAND_MAX;
+	return (rr < E);
 }
 vector<double> rev(vector<double> state)// reverses the state..
 {											// more concretely it flips the board and changes black pieces with their counterparts and viceversa  
@@ -389,7 +389,7 @@ void training_episode(double E) { // a training episode with probality E of play
 	for (int i = N - 3;i >= 0;--i)
 	{
 		Y[i] = (Estimate(scale_to_layer(episode_states[i + 2]))); // generating Y values for dataset
-		avg += Y[i];
+	//avg += Y[i];
 	}
 
 	iterations(episode_states, Y, num_iterations);
